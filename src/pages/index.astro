@@ -1,12 +1,130 @@
 ---
-import Home from '../components/Home.astro';
+
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
+import Marquee from "../components/Marquee.astro"
+import Image from "astro:assets";
+import firstRobot from '../assets/display/first-robot.jpg';
+import oldSetup from '../assets/display/old-setup.jpg';
+import chasisCad from '../assets/display/chasis-cad.jpg';
+import fabricating from '../assets/display/fabricating.jpg';
+import ImageGrid from "../components/ImageGrid.astro";
+import versionOne from '../assets/display/version-one.jpg'
+import watching from '../assets/display/watching.jpg'
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
-
+<Navbar />
 <Layout>
-  <Navbar /><Home />
+  <div class="container">
+    <Marquee message="WELCOME TO REVERSE CURRENT"/>
+    <div class="header">
+      <div class="title">
+        <h1>WE ARE REVERSE CURRENT</h1>
+      </div>
+      <div class="subtitle">
+        <p>Creating opportunities in STEM for all ages and redefining what is possible in FTC</p>
+      </div>
+    </div>
+    <div class="display-container">
+      <ImageGrid images={[
+        { src: versionOne.src, alt: "Version one of our 2026 robot" },
+        { src: watching.src, alt: "A competition photo" },
+      ]} height={ 500 } />
+    </div>
+    <div class="text">
+      <p>
+        Welcome! We are a First Tech Challenge (FTC) team from Dublin, OH.
+        Reverse Current was created out of the ashes of the Aquabots, which was faced with an uncertain future after the announcement that First Lego League would be disbanded.
+        We wanted to ensure that robotics opportunities were still available to all students possible, and not just those in the high school exclusive First Robotics Competition.
+        Reverse Current is committed to spreading the message of First and growing access to STEM in our community!
+      </p>
+    </div>
+    <div class="subheader">
+      <h2>OUR STORY</h2>
+    </div>
+    <div class="text">
+      <p>
+        Back in 20XX, a First Lego League team named the Aquabots was founded by members of a local swim team (hence the name). For years they competed in local tournaments and constantly pushed the limits of what was possible for elementary and middle schoolers to do.
+        Unfortunately, it was announced that First Lego League would be discontinuing because of some conflict of interests between Lego and First. With the future of Aquabots looking grim, we had to pivot.
+        The idea of Reverse Current was created when our founders went to the First World Championships with their local high school team and took an interest in the First Tech Challenge section of the event.
+        All of us were complete strangers to FTC and we were amazed by the difference in culture and technology. We wanted to be a part of that, and with FLL coming to a close, we all knew what we had to do.
+        When we returned from Texas we started laying the groundwork. The team name comes from one of the founders frying a Raspberry Pi and a strip of LID lights by accidentally reversing the current in the strip.
+        We were fortunate enough to find some old FTC parts in a shed at our local high school. They had come from a team who had disbanded several years ago and we wanted to reuse their parts to get our start, especially since we were completely self-funded.
+      </p>
+    </div>
+    <div class="display-container">
+      <ImageGrid images={[
+        { src: firstRobot.src, alt: "Our first robot" },
+        { src: oldSetup.src, alt: "Our original setup" },
+        { src: chasisCad.src, alt: "Original chassis CAD" },
+        { src: fabricating.src, alt: "Fabricating the wooden chassis" }
+      ]} height={ 500 }/>
+    </div>
+  </div>
+  <style>
+
+    .container {
+      perspective: 1px;
+      padding: 20px;
+    }
+
+    .header {
+      justify-content: center;
+      flex-direction: column;
+      display: flex;
+      margin-top: 60px;
+    }
+
+    .header h1{
+      color: #c83131;
+      font-size: 4vw;
+      margin: 0 auto;
+      justify-content: center;
+      display: flex;
+      font-family: var(--font-dela-gothic-one);
+      text-shadow: rgba(255,0,13,0.9) 0 0 40px;
+    }
+
+    .header p {
+      color: #aeaeae;
+      justify-content: center;
+      display: flex;
+      font-size: 25px;
+      font-family: var(--font-jetbrains-mono);
+    }
+
+    .text {
+      color: white;
+      font-size: 36px;
+      justify-content: center;
+      display: flex;
+      margin: 0 auto;
+      max-width: 80vw;
+      text-align: center;
+      font-family: var(--font-geist-pixel);
+    }
+
+    .subheader {
+      color: #c83131;
+      font-size: 43px;
+      justify-content: center;
+      display: flex;
+      margin: 40px auto 0;
+      text-align: center;
+      font-family: var(--font-dela-gothic-one);
+    }
+
+    .subheader h2 {
+      text-shadow: rgba(255,0,13,0.9) 0 0 57px;
+    }
+
+    .display-container {
+      display: flex;
+      justify-content: center;
+      margin: 100px;
+    }
+
+  </style>
 </Layout>

@@ -1,6 +1,13 @@
+---
+import { Font } from "astro:assets";
+---
+
 <div id="navbar-menu" class="navbar-menu">
+  <Font cssVariable="--font-jersey-10" />
   <a href="/">Home</a>
   <a href="/team">Team</a>
+  <a href="/portfolio">Portfolio</a>
+  <a href="/resources">Resources</a>
   <a href="/contact">Contact</a>
 </div>
 
@@ -12,7 +19,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 70px;
+    gap: 150px;
     padding: 0;
   }
 
@@ -20,11 +27,11 @@
     text-align: center;
     padding: 20px 0;
     text-decoration: none;
-    font-size: 1.3rem;
+    font-size: 2.5rem;
     font-weight: bold;
     text-transform: uppercase;
     color: #FFFFFF;
-    font-family: "Courier New", monospace;
+    font-family: var(--font-jersey-10);
   }
 
   .navbar-menu a:hover {
