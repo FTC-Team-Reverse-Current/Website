@@ -1,0 +1,99 @@
+---
+import Layout from "../layouts/Layout.astro";
+import firstRobot from "../assets/display/first-robot.jpg";
+import oldSetup from "../assets/display/old-setup.jpg";
+import chasisCad from "../assets/display/chasis-cad.jpg";
+import fabricating from "../assets/display/fabricating.jpg";
+import ImageGrid from "../components/ImageGrid.astro";
+import { Image } from "astro:assets";
+import versionOne from '../assets/display/version-one.jpg'
+import Statistics from "../components/Statistics.astro";
+---
+
+<Layout>
+    <div class="container">
+        <div class="header">
+            <div class="title">
+                <h1>PORTFOLIO</h1>
+            </div>
+        </div>
+        <div class="text">
+            <p>
+                Click on a year to see our portfolio, which includes timelines, pictures, code examples, and cad models of that year
+            </p>
+        </div>
+        <div class="display-grid">
+            <div class="object">
+                <Image src={versionOne} alt="The 2026-27 Robot" class="grid-image"/>
+                <div class="grid-text">
+                    <a href="/portfolios/2026">2026-2027: BIOBUZZ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .header {
+            justify-content: center;
+            flex-direction: column;
+            display: flex;
+            margin-top: 60px;
+        }
+
+        .header h1{
+            color: #c83131;
+            font-size: 4vw;
+            margin: 0 auto;
+            justify-content: center;
+            display: flex;
+            font-family: var(--font-dela-gothic-one);
+            text-shadow: rgba(255,0,13,0.9) 0 0 40px;
+        }
+
+        .display-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            justify-items: center;
+            margin-top: 100px;
+        }
+
+        .object {
+            background-color: black;
+        }
+
+        .grid-image {
+            object-fit: cover;
+            object-position: center;
+            width: 400px;
+            height: 400px;
+        }
+
+        .grid-text {
+            margin: 20px 30px 30px;
+            text-align: center;
+        }
+
+        .grid-text a{
+            font-size: 2.7rem;
+            color: white;
+            font-family: var(--font-jersey-10);
+            text-decoration: none;
+        }
+
+        .grid-text a:hover {
+            color: #F54927;
+        }
+
+        .text {
+            color: white;
+            font-size: 36px;
+            justify-content: center;
+            display: flex;
+            margin: 60px auto 0;
+            max-width: 80vw;
+            text-align: center;
+            font-family: var(--font-geist-pixel);
+        }
+
+    </style>
+</Layout>

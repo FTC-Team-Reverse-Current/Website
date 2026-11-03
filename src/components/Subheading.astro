@@ -1,0 +1,51 @@
+---
+
+import { Font } from "astro:assets"
+
+const { message } = Astro.props;
+
+---
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting || entry.intersectionRatio < 0.5) return;
+
+            entry.target.classList.add("animate__animated", "animate__fadeIn");
+            observer.unobserve(entry.target);
+        });
+    }, {
+        threshold: 0.5
+    });
+
+    document.querySelectorAll(".subheader h2").forEach((element) => {
+        observer.observe(element);
+    });
+
+</script>
+
+<Font cssVariable='--font-dela-gothic-one' preload />
+<div class="subheader">
+    <h2>{ message }</h2>
+</div>
+
+<style>
+    .subheader {
+        color: #c83131;
+        font-size: 43px;
+        justify-content: center;
+        display: flex;
+        margin: 40px auto 0;
+        text-align: center;
+        font-family: var(--font-dela-gothic-one);
+    }
+
+    .subheader h2 {
+        text-shadow: rgba(255,0,13,0.9) 0 0 57px;
+        opacity: 0;
+    }
+
+    .subheader h2.animate__animated {
+        opacity: 1;
+    }
+</style>

@@ -1,8 +1,10 @@
 ---
 import { Font } from "astro:assets";
+import Square from "../assets/square.svg"
 ---
 
 <div id="navbar-menu" class="navbar-menu">
+  <Square class="header-logo"/>
   <Font cssVariable="--font-jersey-10" />
   <a href="/">Home</a>
   <a href="/team">Team</a>
@@ -36,5 +38,10 @@ import { Font } from "astro:assets";
 
   .navbar-menu a:hover {
     color: #F54927;
+  }
+
+  .navbar-menu .header-logo {
+    width: 60px;
+    height: 60px;
   }
 </style>

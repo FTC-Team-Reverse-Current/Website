@@ -1,0 +1,43 @@
+---
+import background from "../assets/background.png";
+---
+
+<div class="background">
+    <div class="background-image"></div>
+</div>
+
+<script>
+    const background = document.querySelector(".background-image");
+
+    window.addEventListener("scroll", () => {
+        if (background) {
+            background.style.transform =
+                `translateY(${-window.scrollY * 0.3}px)`;
+        }
+    }, { passive: true });
+</script>
+
+<style>
+    .background {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        overflow: hidden;
+    }
+
+    .background-image {
+        position: absolute;
+
+        top: -50%;
+        left: 0;
+        width: 100%;
+        height: 200%;
+
+        background-image: url("../assets/background.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        will-change: transform;
+    }
+</style>

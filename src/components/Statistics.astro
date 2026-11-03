@@ -1,0 +1,126 @@
+---
+import { Font } from "astro:assets";
+import "animate.css"
+
+const year = new Date().getFullYear();
+
+const statsResponse = await fetch("https://api.ftcscout.org/rest/v1/teams/36393/quick-stats")
+const statsData = await statsResponse.json()
+
+const eventsResponse = await fetch("https://api.ftcscout.org/rest/v1/teams/36393/matches")
+const eventsData = await eventsResponse.json()
+
+const seasonResponse = await fetch(`https://api.ftcscout.org/rest/v1/teams/36393/events/${year}`)
+const seasonData = await seasonResponse.json()
+
+let wins = 0;
+
+seasonData.forEach((item: any) => {
+    if (item.stats) {
+        wins += item.stats.wins
+    }
+})
+---
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("animate__animated", "animate__fadeIn");
+            } else {
+                entry.target.classList.remove("animate__animated", "animate__fadeIn");
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+
+    document.querySelectorAll(".animate").forEach((element) => {
+        observer.observe(element);
+    });
+</script>
+
+<div class="grid-container">
+    <Font cssVariable="--font-jersey-10" preload />
+    <Font cssVariable='--font-jetbrains-mono' preload />
+    <div class="object">
+        <div class="value">
+            <p>Matches</p>
+            <h1 class="animate">{eventsData.length}</h1>
+        </div>
+    </div>
+    <div class="object">
+        <div class="value">
+            <p>Auto</p>
+            <h1 class="animate">{statsData.auto.value.toFixed(2)}</h1>
+        </div>
+    </div>
+    <div class="object">
+        <div class="value">
+            <p>TeleOp</p>
+            <h1 class="animate">{statsData.dc.value.toFixed(2)}</h1>
+        </div>
+    </div>
+    <div class="object">
+        <div class="value">
+            <p>Endgame</p>
+            <h1 class="animate">{statsData.eg.value.toFixed(2)}</h1>
+        </div>
+    </div>
+    <div class="object">
+        <div class="value">
+            <p>Total</p>
+            <h1 class="animate">{statsData.tot.value.toFixed(2)}</h1>
+        </div>
+    </div>
+    <div class="object">
+        <div class="value">
+            <p>Wins</p>
+            <h1 class="animate">{wins}</h1>
+        </div>
+    </div>
+</div>
+
+<style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        width: 100%;
+        gap: 1rem;
+    }
+
+    .object {
+        color: white;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        backdrop-filter: blur(8px);
+    }
+
+    .value {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .value p {
+        font-size: 2rem;
+        margin: 10px;
+        font-family: var(--font-jetbrains-mono);
+    }
+
+    .value h1 {
+        font-size: 8rem;
+        margin: 0 10px 10px;
+        font-family: var(--font-jersey-10);
+        color: #c83131;
+        text-shadow: rgba(255,0,13,0.6) 0 0 25px;
+        opacity: 0;
+    }
+
+    .value h1.animate__animated {
+        opacity: 1;
+    }
+</style>

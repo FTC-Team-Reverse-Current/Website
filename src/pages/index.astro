@@ -3,7 +3,7 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Marquee from "../components/Marquee.astro"
-import Image from "astro:assets";
+import { Image } from "astro:assets";
 import firstRobot from '../assets/display/first-robot.jpg';
 import oldSetup from '../assets/display/old-setup.jpg';
 import chasisCad from '../assets/display/chasis-cad.jpg';
@@ -11,11 +11,13 @@ import fabricating from '../assets/display/fabricating.jpg';
 import ImageGrid from "../components/ImageGrid.astro";
 import versionOne from '../assets/display/version-one.jpg'
 import watching from '../assets/display/watching.jpg'
+import Square from '../assets/square.svg'
+import Statistics from '../components/Statistics.astro';
+import Subheading from "../components/Subheading.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
-<Navbar />
 <Layout>
   <div class="container">
     <Marquee message="WELCOME TO REVERSE CURRENT"/>
@@ -35,25 +37,12 @@ import watching from '../assets/display/watching.jpg'
     </div>
     <div class="text">
       <p>
-        Welcome! We are a First Tech Challenge (FTC) team from Dublin, OH.
-        Reverse Current was created out of the ashes of the Aquabots, which was faced with an uncertain future after the announcement that First Lego League would be disbanded.
-        We wanted to ensure that robotics opportunities were still available to all students possible, and not just those in the high school exclusive First Robotics Competition.
-        Reverse Current is committed to spreading the message of First and growing access to STEM in our community!
+        We are Reverse Current, a First Tech Challenge team from Dublin, Ohio.
+        Reverse Current is commited to giving young students access to STEM and developing real skills in our members.
+        Our team is pushing the boundaries of what a small, self-started team can do in First competitions.
       </p>
     </div>
-    <div class="subheader">
-      <h2>OUR STORY</h2>
-    </div>
-    <div class="text">
-      <p>
-        Back in 20XX, a First Lego League team named the Aquabots was founded by members of a local swim team (hence the name). For years they competed in local tournaments and constantly pushed the limits of what was possible for elementary and middle schoolers to do.
-        Unfortunately, it was announced that First Lego League would be discontinuing because of some conflict of interests between Lego and First. With the future of Aquabots looking grim, we had to pivot.
-        The idea of Reverse Current was created when our founders went to the First World Championships with their local high school team and took an interest in the First Tech Challenge section of the event.
-        All of us were complete strangers to FTC and we were amazed by the difference in culture and technology. We wanted to be a part of that, and with FLL coming to a close, we all knew what we had to do.
-        When we returned from Texas we started laying the groundwork. The team name comes from one of the founders frying a Raspberry Pi and a strip of LID lights by accidentally reversing the current in the strip.
-        We were fortunate enough to find some old FTC parts in a shed at our local high school. They had come from a team who had disbanded several years ago and we wanted to reuse their parts to get our start, especially since we were completely self-funded.
-      </p>
-    </div>
+    <Subheading message="THE STORY OF OUR TEAM"/>
     <div class="display-container">
       <ImageGrid images={[
         { src: firstRobot.src, alt: "Our first robot" },
@@ -62,7 +51,25 @@ import watching from '../assets/display/watching.jpg'
         { src: fabricating.src, alt: "Fabricating the wooden chassis" }
       ]} height={ 500 }/>
     </div>
+    <div class="text">
+      <p>
+        Reverse Current is not entirely an original team. A lot of members carried over from a previous First Lego Team named the Aquabots.
+        When it was announced that FLL would be discontinuing after the 2026-27 season, we needed to pivot, or risk losing nearly the entirety of Dublin's pre-high school STEM programs.
+        The idea for Reverse Current was created the founding members saw the vast community of FTC at the First World Championships in Houston and knew what they had to do.
+        Within a month, Reverse Current was formed, and our journey as a First Tech Challenge team began.
+      </p>
+    </div>
+    <Subheading message="SEASON STATISTICS"/>
+    <div class="text">
+      <p>
+        Here are our current team statistics pulled from the FTC Scout API. These are not completely accurate since they split the match scores between both team members.
+      </p>
+    </div>
+    <div class="stats">
+      <Statistics/>
+    </div>
   </div>
+
   <style>
 
     .container {
@@ -70,10 +77,18 @@ import watching from '../assets/display/watching.jpg'
       padding: 20px;
     }
 
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+
     .header {
       justify-content: center;
       flex-direction: column;
       display: flex;
+      gap: 10px;
       margin-top: 60px;
     }
 
@@ -85,6 +100,13 @@ import watching from '../assets/display/watching.jpg'
       display: flex;
       font-family: var(--font-dela-gothic-one);
       text-shadow: rgba(255,0,13,0.9) 0 0 40px;
+    }
+
+    .header .header-logo {
+      width: 4vw;
+      height: 4vw;
+      justify-content: center;
+      display: flex;
     }
 
     .header p {
@@ -123,8 +145,14 @@ import watching from '../assets/display/watching.jpg'
     .display-container {
       display: flex;
       justify-content: center;
-      margin: 100px;
+      margin: 50px auto;
     }
 
+    .stats {
+      display: flex;
+      justify-content: center;
+      max-width: 80vw;
+      margin: 60px auto;
+    }
   </style>
 </Layout>
