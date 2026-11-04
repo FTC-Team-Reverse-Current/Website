@@ -21,7 +21,7 @@ import Square from "../assets/square.svg"
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 150px;
+    gap: clamp(1rem, 5vw, 150px);
     padding: 0;
   }
 
@@ -45,10 +45,21 @@ import Square from "../assets/square.svg"
     height: 60px;
   }
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 900px) {
     .navbar-menu {
-      padding: 20px;
-      gap: 5rem;
+      box-sizing: border-box;
+      flex-wrap: wrap;
+      padding: 0.2rem;
+      gap: 1rem;
+    }
+    .navbar-menu a {
+      font-size: clamp(1rem, 3vw, 2rem);
+    }
+
+    .navbar-menu .header-logo {
+      flex-shrink: 0;
+      width: 2rem;
+      height: 2rem;
     }
   }
 </style>

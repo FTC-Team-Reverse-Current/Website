@@ -23,14 +23,16 @@ import { Font } from "astro:assets";
     </div>
     ) : null}
     <div class="bio">
-        <div class="title" style=`justify-content: ${direction}`>
+        <div class:list={["title", { left: direction === "left", right: direction === "right" }]}>
             <h2>{ name }</h2>
         </div>
-        <div class="role" style=`justify-content: ${direction}`>
+
+        <div class:list={["role", { left: direction === "left", right: direction === "right" }]}>
             <h2>{ role }</h2>
         </div>
-        <div class="text" style=`justify-content: ${direction}`>
-            <p style=`direction: ${direction == "left" ? "ltr" : "rtl"}`>{ bio }</p>
+
+        <div class:list={["text", { left: direction === "left", right: direction === "right" }]}>
+            <p>{ bio }</p>
         </div>
     </div>
     { direction == "right" ? (
@@ -43,9 +45,9 @@ import { Font } from "astro:assets";
 <style>
     .bio-container {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 60px;
-        margin-top: 60px;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 2rem;
+        margin: 2rem auto;
     }
 
     .image {
@@ -56,12 +58,16 @@ import { Font } from "astro:assets";
     .image img{
         object-fit: cover;
         object-position: center;
-        width: 500px;
-        height: 500px;
+        width: 100%;
+        max-width: 500px;
+        aspect-ratio: 1;
+        height: auto;
     }
 
     .bio {
         grid-column: span 3;
+        min-width: 0;
+        overflow-wrap: anywhere;
         display: flex;
         flex-direction: column;
         margin: 0;
@@ -71,7 +77,6 @@ import { Font } from "astro:assets";
         color: white;
         font-size: 36px;
         margin: 0;
-        max-width: 80vw;
         font-family: var(--font-geist-pixel);
         display: flex;
     }
@@ -101,5 +106,49 @@ import { Font } from "astro:assets";
     .title h2 {
         text-shadow: rgba(255,0,13,0.9) 0 0 57px;
         margin: 0;
+    }
+
+    .title.left,
+    .role.left,
+    .text.left {
+        justify-content: left;
+        text-align: left;
+    }
+
+    .title.right,
+    .role.right,
+    .text.right {
+        justify-content: right;
+        text-align: right;
+    }
+
+    @media screen and (max-width: 900px) {
+        .bio-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title {
+            font-size: 20px;
+            justify-content: left;
+        }
+
+        .role h2 {
+            font-size: 15px;
+            justify-content: left;
+        }
+
+        .text {
+            font-size: 1.25rem;
+            justify-content: left;
+        }
+
+        .title,
+        .role,
+        .text {
+            justify-content: flex-start;
+            text-align: left;
+        }
+
     }
 </style>

@@ -75,37 +75,37 @@ import turret from '../assets/display/turret.gif'
 
     .container {
       perspective: 1px;
-      padding: 20px;
+      padding: 2rem;
     }
 
     .title {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 15px;
     }
 
     .header {
       justify-content: center;
       flex-direction: column;
       display: flex;
-      gap: 10px;
-      margin-top: 60px;
+      margin-top: 0;
     }
 
     .header h1{
       color: #c83131;
-      font-size: 4vw;
-      margin: 0 auto;
+      font-size: 120px;
+      margin: 2rem auto;
       justify-content: center;
       display: flex;
       font-family: var(--font-dela-gothic-one);
       text-shadow: rgba(255,0,13,0.9) 0 0 40px;
+      max-width: 90%;
+      text-align: center;
     }
 
     .header .header-logo {
-      width: 4vw;
-      height: 4vw;
+      width: 1rem;
+      height: 1rem;
       justify-content: center;
       display: flex;
     }
@@ -123,8 +123,8 @@ import turret from '../assets/display/turret.gif'
       font-size: 36px;
       justify-content: center;
       display: flex;
-      margin: 0 auto;
-      max-width: 80vw;
+      margin: 2rem auto;
+      max-width: 80%;
       text-align: center;
       font-family: var(--font-geist-pixel);
     }
@@ -134,7 +134,6 @@ import turret from '../assets/display/turret.gif'
       font-size: 43px;
       justify-content: center;
       display: flex;
-      margin: 40px auto 0;
       text-align: center;
       font-family: var(--font-dela-gothic-one);
     }
@@ -146,14 +145,14 @@ import turret from '../assets/display/turret.gif'
     .display-container {
       display: flex;
       justify-content: center;
-      margin: 50px auto;
+      margin: 2rem auto;
     }
 
     .stats {
       display: flex;
       justify-content: center;
-      max-width: 80vw;
-      margin: 60px auto;
+      max-width: 80%;
+      margin: 2rem auto;
     }
 
     @media screen and (max-width: 900px) {
@@ -162,19 +161,24 @@ import turret from '../assets/display/turret.gif'
       }
 
       .header h1 {
-        font-size: 3.2rem;
+        font-size: 1.5rem;
+        text-align: center;
+        margin: 1rem auto;
       }
 
       .header p {
-        font-size: 1rem;
+        font-size: 0.8rem;
+        text-align: center;
       }
 
       .display-container {
-        margin: 50px auto;
+        margin: 1rem auto;
       }
 
       .text {
-        max-width: 90%
+        max-width: 90%;
+        font-size: 1.25rem;
+        margin: 1rem auto;
       }
 
       .stats {

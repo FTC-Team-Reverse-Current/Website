@@ -1,0 +1,146 @@
+---
+interface Props {
+    name: string,
+    image: string,
+    role: string,
+    bio: string,
+}
+
+const { name, image, role, bio } = Astro.props
+
+import team from '../assets/display/team-comp-1.jpg';
+import { Font } from "astro:assets";
+
+---
+<Font cssVariable='--font-dela-gothic-one' preload />
+<Font cssVariable='--font-geist-pixel' preload />
+<Font cssVariable='--font-jetbrains-mono' preload />
+<div class="bio-container">
+    <div class="image">
+        <img src={ image } alt="bio-image" />
+    </div>
+    <div class="bio">
+        <div>
+            <h2>{ name }</h2>
+        </div>
+
+        <div>
+            <h2>{ role }</h2>
+        </div>
+
+        <div>
+            <p>{ bio }</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bio-container {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 2rem;
+        margin: 2rem auto;
+    }
+
+    .image {
+        display: flex;
+        justify-content: center;
+    }
+
+    .image img{
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+        max-width: 500px;
+        aspect-ratio: 1;
+        height: auto;
+    }
+
+    .bio {
+        grid-column: span 3;
+        min-width: 0;
+        overflow-wrap: anywhere;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .text {
+        color: white;
+        font-size: 36px;
+        margin: 0;
+        font-family: var(--font-geist-pixel);
+        display: flex;
+    }
+
+    .text {
+        margin: 0;
+        padding: 0;
+    }
+
+    .role {
+        display: flex;
+    }
+
+    .role h2 {
+        color: white;
+        font-size: 25px;
+        font-family: var(--font-jetbrains-mono);
+    }
+
+    .title {
+        color: #c83131;
+        font-size: 30px;
+        display: flex;
+        font-family: var(--font-dela-gothic-one);
+    }
+
+    .title h2 {
+        text-shadow: rgba(255,0,13,0.9) 0 0 57px;
+        margin: 0;
+    }
+
+    .title.left,
+    .role.left,
+    .text.left {
+        justify-content: left;
+        text-align: left;
+    }
+
+    .title.right,
+    .role.right,
+    .text.right {
+        justify-content: right;
+        text-align: right;
+    }
+
+    @media screen and (max-width: 900px) {
+        .bio-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title {
+            font-size: 20px;
+            justify-content: left;
+        }
+
+        .role h2 {
+            font-size: 15px;
+            justify-content: left;
+        }
+
+        .text {
+            font-size: 1.25rem;
+            justify-content: left;
+        }
+
+        .title,
+        .role,
+        .text {
+            justify-content: flex-start;
+            text-align: left;
+        }
+
+    }
+</style>

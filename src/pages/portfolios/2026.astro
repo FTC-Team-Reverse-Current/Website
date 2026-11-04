@@ -49,5 +49,17 @@ import Subheading from "../../components/Subheading.astro";---
             text-align: center;
             font-family: var(--font-geist-pixel);
         }
+
+        @media screen and (max-width: 900px) {
+            .header h1 {
+                font-size: clamp(1.5rem, 6vw, 3.2rem);
+                text-align: center;
+            }
+
+            .text {
+                max-width: 90%;
+                font-size: 1.25rem;
+            }
+        }
     </style>
 </Layout>

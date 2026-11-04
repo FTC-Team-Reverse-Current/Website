@@ -137,14 +137,14 @@ if (seasonData) {
     }
 
     .value p {
-        font-size: 2rem;
+        font-size: 30px;
         margin: 10px;
         font-family: var(--font-jetbrains-mono);
     }
 
     .value h1 {
-        font-size: 8rem;
-        margin: 0 10px 10px;
+        font-size: 160px;
+        margin: 0 1rem 1rem;
         font-family: var(--font-jersey-10);
         color: #c83131;
         text-shadow: rgba(255,0,13,0.6) 0 0 25px;
@@ -161,10 +161,34 @@ if (seasonData) {
         font-family: var(--font-jetbrains-mono);
     }
 
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: 900px) {
         .grid-container {
-            grid-template-rows: repeat(2, minmax(200px, 1fr));
-            grid-template-columns: repeat(3, minmax(200px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 0.2rem;
+        }
+
+        .value {
+            width: 100%;
+        }
+
+        .object {
+            padding: 0;
+            backdrop-filter: none;
+        }
+
+        .value h1 {
+            font-size: 4rem;
+            margin: 0 0.5rem 0.5rem;
+        }
+
+        .value p {
+            font-size: 20px;
+        }
+
+        .error-message {
+            font-size: 1.25rem;
+            overflow-wrap: anywhere;
         }
     }
 </style>
