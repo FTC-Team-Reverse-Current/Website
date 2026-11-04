@@ -1,7 +1,13 @@
 ---
 
 import Layout from "../../layouts/Layout.astro";
-import Subheading from "../../components/Subheading.astro";---
+import Subheading from "../../components/Subheading.astro";
+import MentorBio from "../../components/MentorBio.astro";
+
+import shooterPreview from '../../assets/bios/shooter-bio.gif'
+import ImageGrid from "../../components/ImageGrid.astro";
+import odometry from '../../assets/display/odometry.gif'
+---
 
 <Layout>
     <div class="container">
@@ -10,18 +16,82 @@ import Subheading from "../../components/Subheading.astro";---
                 <h1>2026-27: BIOBUZZ</h1>
             </div>
         </div>
-        <Subheading message="Our Humble Beginnings" />
+        <Subheading message="THE ORIGINS OF REVERSE CURRENT" />
+        <p class="subtitle">Early May, 2026</p>
         <div class="text">
             <p>
-                When stepping into our first season of First Tech Challenge, we had no idea what to expect.
-                Our season started when we were generously given old FTC parts from the now, unfortunately disbanded team 8462, we would not be here without them and FRC team 1014.
-                We used what he had to construct some test chassis. We needed to figure out by ourselves how the control pipeline worked, as we come from FLL and FRC backgrounds.
-                It took several meetings and late nights to finally get our old Motorola working, but when it did, we became invigorated.
+                Our season started in early May. Reverse Current's founding members were at the Houston World Championships with their FRC team, the Bad Robots.
+                After touring the FTC floor of the building, we quickly came up with the idea of starting our own team due to the rocky future of FLL.
+                We knew that keeping the STEM programs in Dublin alive was critical, and we could not let such a big part of our lives simply disappear.
             </p>
         </div>
+        <Subheading message="OUR HUBLE BEGINNINGS" />
+        <p class="subtitle">May, 2026</p>
+        <div class="text">
+            <p>
+                We did not know where to begin. We had no parts, no sponsors, no structure. We had an idea and had not fully fleshed out where to go from there.
+                In late May, we were cleaning out the shed behind our local high school which was run by Bad Robots, and there we would get our first push.
+                Within the shed, we found FTC parts from the now disbanded 8 to Automate team from 2022. We saw this as a sign that Reverse Current was meant to be, so we got to work.
+            </p>
+        </div>
+        <Subheading message="OUR FIRST CHASSIS" />
+        <p class="subtitle">June - Mid July, 2026</p>
+        <div class="text">
+            <p>
+                Using the parts we thrifted, we began working on a test chassis to learn the basics of the driver hub, programming, and electrical work.
+                For a week or so, we struggled connecting the robot to the driver hub, then pushing the code to the robot, then connecting controllers.
+                During this stage, our greatest problems were figuring out what parts and materials we were missing, as well as how we needed to set up our team structure and pipeline.
+                For around a week, we could not connect our controllers because we did not have the required OTG adapter for the controllers.
+            </p>
+        </div>
+        <Subheading message="THE GAME ANNOUNCEMENT" />
+        <p class="subtitle">September, 2026</p>
+        <div class="text">
+            <p>
+                This was the part we had been waiting for. After months of preparation, we were ready to begin. When the announcement for the game came out, we studied the video vigerously.
+                We spent several meetings discussing how we wanted to design our robot. We were overwhelmed with ideas, and learning to prioritize certain parts of a game was a lesson we had to learn.
+                Ideas like a spindexer, mechanical sorting, and elevators had to be scrapped in order to make a clean, robust design for our robot. We could not spread ourselves thin and expect good results.
+            </p>
+        </div>
+        <div class="bio">
+            <MentorBio
+                    name="Nectar, Pollen, and Flowers"
+                    role="Learning how to prioritize instead of generalize"
+                    direction="right"
+                    image={shooterPreview.src}
+                    bio="Our biggest challenge at this point in the season was determining what our priorities on the robot should be. Our instinct was to try and do everything as good as possible.
+                    We wanted to show off and thought that doing an all-inclusive robot would be the best path to do so. What we learned was that this is just not possible. Everything comes
+                    at the sacrifice of something else. We decided we wanted to streamline into shooting, since depositing into flowers was only available in later parts of the game, and because it was
+                    much more difficult to design a precise shooter or elevator."
+            />
+        </div>
+        <Subheading message="ODOMETRY TUNING" />
+        <p class="subtitle">Late September, 2026</p>
+        <div class="text">
+            <p>
+                One of our greatest struggles in the early season was the Odometry. Very early on in the season we purchased a GoBuilda Pinpoint, but we underestimated the challenges that would come from
+                trying to ensure our Odometry and subsequent autonomous was properly tuned. When we ran our "Go Straight" test, the robot would completely swerve to the right. It took us several meetings to properly
+                figure out the issue. We disassembled our drive train, re-oriented the pinpoint, and even tried refactoring our code. We only learned after our first competition that the issue was a faulty motor on
+                the top left of the chassis. Without a doubt this was a reality check not to assume that something works because it should just work. When you are engineering, everything deserves scrutiny.
+            </p>
+        </div>
+
     </div>
 
     <style>
+        .display-container {
+            display: flex;
+            justify-content: center;
+            margin: 2rem auto;
+        }
+
+        .bio {
+            display: flex;
+            justify-content: center;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
         .header {
             justify-content: center;
             flex-direction: column;
@@ -50,6 +120,15 @@ import Subheading from "../../components/Subheading.astro";---
             font-family: var(--font-geist-pixel);
         }
 
+        .subtitle {
+            color: #aeaeae;
+            justify-content: center;
+            display: flex;
+            font-size: 25px;
+            font-family: var(--font-jetbrains-mono);
+            margin: 0;
+        }
+
         @media screen and (max-width: 900px) {
             .header h1 {
                 font-size: clamp(1.5rem, 6vw, 3.2rem);
@@ -59,6 +138,12 @@ import Subheading from "../../components/Subheading.astro";---
             .text {
                 max-width: 90%;
                 font-size: 1.25rem;
+                margin: 1rem auto;
+            }
+
+            .subtitle {
+                font-size: 0.8rem;
+                text-align: center;
             }
         }
     </style>

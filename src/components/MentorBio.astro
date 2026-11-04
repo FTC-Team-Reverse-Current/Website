@@ -18,9 +18,9 @@ import { Font } from "astro:assets";
 <Font cssVariable='--font-jetbrains-mono' preload />
 <div class="bio-container">
     { direction == "left" ? (
-    <div class="image">
-        <img src={ image } alt="bio-image" />
-    </div>
+            <div class="image">
+                <img src={ image } alt="bio-image" />
+            </div>
     ) : null}
     <div class="bio">
         <div class:list={["title", { left: direction === "left", right: direction === "right" }]}>
@@ -36,9 +36,9 @@ import { Font } from "astro:assets";
         </div>
     </div>
     { direction == "right" ? (
-        <div class="image">
-            <img src={ image } alt="bio-image" />
-        </div>
+            <div class="image">
+                <img src={ image } alt="bio-image" />
+            </div>
     ): null}
 </div>
 
@@ -122,10 +122,15 @@ import { Font } from "astro:assets";
         text-align: right;
     }
 
-    @media screen and (max-width: 900px) {
+    @media screen and (max-width: 1024px) {
         .bio-container {
             display: flex;
             flex-direction: column;
+        }
+
+        /* Forces the image to always render first regardless of HTML order */
+        .image {
+            order: -1;
         }
 
         .title {
@@ -149,6 +154,5 @@ import { Font } from "astro:assets";
             justify-content: flex-start;
             text-align: left;
         }
-
     }
 </style>
