@@ -32,4 +32,10 @@ const { images, height } = Astro.props;
         object-fit: cover;
         display: block;
     }
+
+    @media screen and (max-width: 1024px) {
+        .display-images {
+            max-width: 90%;
+        }
+    }
 </style>

@@ -1,3 +1,53 @@
 ---
 
----
+import Layout from "../../layouts/Layout.astro";
+import Subheading from "../../components/Subheading.astro";---
+
+<Layout>
+    <div class="container">
+        <div class="header">
+            <div class="title">
+                <h1>2026-27: BIOBUZZ</h1>
+            </div>
+        </div>
+        <Subheading message="Our Humble Beginnings" />
+        <div class="text">
+            <p>
+                When stepping into our first season of First Tech Challenge, we had no idea what to expect.
+                Our season started when we were generously given old FTC parts from the now, unfortunately disbanded team 8462, we would not be here without them and FRC team 1014.
+                We used what he had to construct some test chassis. We needed to figure out by ourselves how the control pipeline worked, as we come from FLL and FRC backgrounds.
+                It took several meetings and late nights to finally get our old Motorola working, but when it did, we became invigorated.
+            </p>
+        </div>
+    </div>
+
+    <style>
+        .header {
+            justify-content: center;
+            flex-direction: column;
+            display: flex;
+            margin-top: 60px;
+        }
+
+        .header h1{
+            color: #c83131;
+            font-size: 4vw;
+            margin: 0 auto;
+            justify-content: center;
+            display: flex;
+            font-family: var(--font-dela-gothic-one);
+            text-shadow: rgba(255,0,13,0.9) 0 0 40px;
+        }
+
+        .text {
+            color: white;
+            font-size: 36px;
+            justify-content: center;
+            display: flex;
+            margin: 60px auto 0;
+            max-width: 80vw;
+            text-align: center;
+            font-family: var(--font-geist-pixel);
+        }
+    </style>
+</Layout>

@@ -1,0 +1,105 @@
+---
+interface Props {
+    name: string,
+    image: string,
+    role: string,
+    bio: string,
+    direction: "left" | "right",
+}
+
+const { name, image, role, bio, direction } = Astro.props
+
+import team from '../assets/display/team-comp-1.jpg';
+import { Font } from "astro:assets";
+
+---
+<Font cssVariable='--font-dela-gothic-one' preload />
+<Font cssVariable='--font-geist-pixel' preload />
+<Font cssVariable='--font-jetbrains-mono' preload />
+<div class="bio-container">
+    { direction == "left" ? (
+    <div class="image">
+        <img src={ image } alt="bio-image" />
+    </div>
+    ) : null}
+    <div class="bio">
+        <div class="title" style=`justify-content: ${direction}`>
+            <h2>{ name }</h2>
+        </div>
+        <div class="role" style=`justify-content: ${direction}`>
+            <h2>{ role }</h2>
+        </div>
+        <div class="text" style=`justify-content: ${direction}`>
+            <p style=`direction: ${direction == "left" ? "ltr" : "rtl"}`>{ bio }</p>
+        </div>
+    </div>
+    { direction == "right" ? (
+        <div class="image">
+            <img src={ image } alt="bio-image" />
+        </div>
+    ): null}
+</div>
+
+<style>
+    .bio-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 60px;
+        margin-top: 60px;
+    }
+
+    .image {
+        display: flex;
+        justify-content: center;
+    }
+
+    .image img{
+        object-fit: cover;
+        object-position: center;
+        width: 500px;
+        height: 500px;
+    }
+
+    .bio {
+        grid-column: span 3;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .text {
+        color: white;
+        font-size: 36px;
+        margin: 0;
+        max-width: 80vw;
+        font-family: var(--font-geist-pixel);
+        display: flex;
+    }
+
+    .text {
+        margin: 0;
+        padding: 0;
+    }
+
+    .role {
+        display: flex;
+    }
+
+    .role h2 {
+        color: white;
+        font-size: 25px;
+        font-family: var(--font-jetbrains-mono);
+    }
+
+    .title {
+        color: #c83131;
+        font-size: 30px;
+        display: flex;
+        font-family: var(--font-dela-gothic-one);
+    }
+
+    .title h2 {
+        text-shadow: rgba(255,0,13,0.9) 0 0 57px;
+        margin: 0;
+    }
+</style>

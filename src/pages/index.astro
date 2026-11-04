@@ -1,6 +1,6 @@
 ---
 
-import Layout from '../layouts/Layout.astro';
+import Layout from '../layouts/Layout.astro'
 import Navbar from '../components/Navbar.astro';
 import Marquee from "../components/Marquee.astro"
 import { Image } from "astro:assets";
@@ -14,6 +14,7 @@ import watching from '../assets/display/watching.jpg'
 import Square from '../assets/square.svg'
 import Statistics from '../components/Statistics.astro';
 import Subheading from "../components/Subheading.astro";
+import turret from '../assets/display/turret.gif'
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -31,7 +32,7 @@ import Subheading from "../components/Subheading.astro";
     </div>
     <div class="display-container">
       <ImageGrid images={[
-        { src: versionOne.src, alt: "Version one of our 2026 robot" },
+        { src: turret.src, alt: "Version one of our 2026 robot" },
         { src: watching.src, alt: "A competition photo" },
       ]} height={ 500 } />
     </div>
@@ -66,7 +67,7 @@ import Subheading from "../components/Subheading.astro";
       </p>
     </div>
     <div class="stats">
-      <Statistics/>
+      <Statistics season="2026"/>
     </div>
   </div>
 
@@ -153,6 +154,32 @@ import Subheading from "../components/Subheading.astro";
       justify-content: center;
       max-width: 80vw;
       margin: 60px auto;
+    }
+
+    @media screen and (max-width: 900px) {
+      .container {
+        width: 100%;
+      }
+
+      .header h1 {
+        font-size: 3.2rem;
+      }
+
+      .header p {
+        font-size: 1rem;
+      }
+
+      .display-container {
+        margin: 50px auto;
+      }
+
+      .text {
+        max-width: 90%
+      }
+
+      .stats {
+        max-width: 90%
+      }
     }
   </style>
 </Layout>

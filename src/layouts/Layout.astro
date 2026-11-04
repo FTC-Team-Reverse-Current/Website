@@ -7,33 +7,50 @@ import Navbar from '../components/Navbar.astro';
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Reverse Current</title>
-		<Font cssVariable='--font-dela-gothic-one' preload />
-		<Font cssVariable='--font-geist-pixel' preload />
-		<Font cssVariable='--font-jetbrains-mono' preload />
-		<Font cssVariable="--font-jersey-10" />
-	</head>
-  	<body>
-		<Navbar />
-		<BackgroundImage />
-		<slot />
-	</body>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<link rel="icon" href="/favicon.ico" />
+	<meta name="generator" content={Astro.generator} />
+	<title>Reverse Current</title>
+	<Font cssVariable='--font-dela-gothic-one' preload />
+	<Font cssVariable='--font-geist-pixel' preload />
+	<Font cssVariable='--font-jetbrains-mono' preload />
+	<Font cssVariable="--font-jersey-10" />
+</head>
+<body>
+<Navbar />
+<BackgroundImage />
+<slot />
+</body>
 </html>
 
 <style>
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
 	html,
 	body {
-    margin: 0;
-    padding: 0;
-	width: 100%;
-	height: 100%;
-	//background-image: url('../assets/background.png');
-	background-size: cover;
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		height: 100%;
+		//background-image: url('../assets/background.png');
+		background-size: cover;
+	}
+
+	html {
+		margin: 0;
+		padding: 0;
+	}
+
+	@media screen and (max-width: 1024px) {
+		body {
+			width: fit-content;
+		}
 	}
 </style>

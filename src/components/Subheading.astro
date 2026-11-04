@@ -9,10 +9,11 @@ const { message } = Astro.props;
 <script>
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-            if (!entry.isIntersecting || entry.intersectionRatio < 0.5) return;
-
-            entry.target.classList.add("animate__animated", "animate__fadeIn");
-            observer.unobserve(entry.target);
+            if (!entry.isIntersecting || entry.intersectionRatio < 0.5) {
+                entry.target.classList.remove("animate__animated", "animate__fadeIn");
+            } else {
+                entry.target.classList.add("animate__animated", "animate__fadeIn");
+            }
         });
     }, {
         threshold: 0.5
@@ -47,5 +48,11 @@ const { message } = Astro.props;
 
     .subheader h2.animate__animated {
         opacity: 1;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .subheader {
+            font-size: 1.7rem;
+        }
     }
 </style>

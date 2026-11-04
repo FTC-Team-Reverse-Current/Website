@@ -1,25 +1,50 @@
 ---
 import { Font } from "astro:assets";
-import "animate.css"
+import "animate.css";
 
-const year = new Date().getFullYear();
+const { season } = Astro.props;
 
-const statsResponse = await fetch("https://api.ftcscout.org/rest/v1/teams/36393/quick-stats")
-const statsData = await statsResponse.json()
+let statsData = null;
+let eventsData = null;
+let seasonData = null;
 
-const eventsResponse = await fetch("https://api.ftcscout.org/rest/v1/teams/36393/matches")
-const eventsData = await eventsResponse.json()
+let error = false;
 
-const seasonResponse = await fetch(`https://api.ftcscout.org/rest/v1/teams/36393/events/${year}`)
-const seasonData = await seasonResponse.json()
+try {
+    const statsResponse = await fetch(
+        `https://api.ftcscout.org/rest/v1/teams/36393/quick-stats?season=${season}`
+    );
+
+    const eventsResponse = await fetch(
+        `https://api.ftcscout.org/rest/v1/teams/36393/matches?season=${season}`
+    );
+
+    const seasonResponse = await fetch(
+        `https://api.ftcscout.org/rest/v1/teams/36393/events/${season}`
+    );
+
+    if (!statsResponse.ok || !eventsResponse.ok || !seasonResponse.ok) {
+        throw new Error("API request failed");
+    }
+
+    statsData = await statsResponse.json();
+    eventsData = await eventsResponse.json();
+    seasonData = await seasonResponse.json();
+
+} catch (err) {
+    console.error("Failed to fetch FTCScout data:", err);
+    error = true;
+}
 
 let wins = 0;
 
-seasonData.forEach((item: any) => {
-    if (item.stats) {
-        wins += item.stats.wins
-    }
-})
+if (seasonData) {
+    seasonData.forEach((item: any) => {
+        if (item.stats) {
+            wins += item.stats.wins;
+        }
+    });
+}
 ---
 
 <script>
@@ -40,46 +65,52 @@ seasonData.forEach((item: any) => {
     });
 </script>
 
-<div class="grid-container">
-    <Font cssVariable="--font-jersey-10" preload />
-    <Font cssVariable='--font-jetbrains-mono' preload />
-    <div class="object">
-        <div class="value">
-            <p>Matches</p>
-            <h1 class="animate">{eventsData.length}</h1>
+{!error ? (
+    <div class="grid-container">
+        <Font cssVariable="--font-jersey-10" preload />
+        <Font cssVariable='--font-jetbrains-mono' preload />
+        <div class="object">
+            <div class="value">
+                <p>Matches</p>
+                <h1 class="animate">{eventsData.length}</h1>
+            </div>
+        </div>
+        <div class="object">
+            <div class="value">
+                <p>Auto</p>
+                <h1 class="animate">{statsData.auto.value.toFixed(2)}</h1>
+            </div>
+        </div>
+        <div class="object">
+            <div class="value">
+                <p>TeleOp</p>
+                <h1 class="animate">{statsData.dc.value.toFixed(2)}</h1>
+            </div>
+        </div>
+        <div class="object">
+            <div class="value">
+                <p>Endgame</p>
+                <h1 class="animate">{statsData.eg.value.toFixed(2)}</h1>
+            </div>
+        </div>
+        <div class="object">
+            <div class="value">
+                <p>Total</p>
+                <h1 class="animate">{statsData.tot.value.toFixed(2)}</h1>
+            </div>
+        </div>
+        <div class="object">
+            <div class="value">
+                <p>Wins</p>
+                <h1 class="animate">{wins}</h1>
+            </div>
         </div>
     </div>
-    <div class="object">
-        <div class="value">
-            <p>Auto</p>
-            <h1 class="animate">{statsData.auto.value.toFixed(2)}</h1>
-        </div>
+): (
+    <div class="error-message">
+        <p>An error occurred while fetching the data...</p>
     </div>
-    <div class="object">
-        <div class="value">
-            <p>TeleOp</p>
-            <h1 class="animate">{statsData.dc.value.toFixed(2)}</h1>
-        </div>
-    </div>
-    <div class="object">
-        <div class="value">
-            <p>Endgame</p>
-            <h1 class="animate">{statsData.eg.value.toFixed(2)}</h1>
-        </div>
-    </div>
-    <div class="object">
-        <div class="value">
-            <p>Total</p>
-            <h1 class="animate">{statsData.tot.value.toFixed(2)}</h1>
-        </div>
-    </div>
-    <div class="object">
-        <div class="value">
-            <p>Wins</p>
-            <h1 class="animate">{wins}</h1>
-        </div>
-    </div>
-</div>
+    )}
 
 <style>
     .grid-container {
@@ -122,5 +153,18 @@ seasonData.forEach((item: any) => {
 
     .value h1.animate__animated {
         opacity: 1;
+    }
+
+    .error-message {
+        color: red;
+        font-size: 50px;
+        font-family: var(--font-jetbrains-mono);
+    }
+
+    @media screen and (max-width: 1024px) {
+        .grid-container {
+            grid-template-rows: repeat(2, minmax(200px, 1fr));
+            grid-template-columns: repeat(3, minmax(200px, 1fr));
+        }
     }
 </style>

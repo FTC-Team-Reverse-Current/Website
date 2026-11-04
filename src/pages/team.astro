@@ -1,0 +1,148 @@
+---
+
+import Layout from "../layouts/Layout.astro";
+import team from '../assets/display/team-comp-1.jpg';
+import ImageGrid from "../components/ImageGrid.astro";
+import Subheading from "../components/Subheading.astro";
+import MentorBio from "../components/MentorBio.astro";
+
+import michael from '../assets/bios/michael.jpg'
+import keagan from '../assets/bios/keagan.jpg'
+import gianmichael from '../assets/bios/gianmichael.jpg'
+
+---
+
+<Layout>
+    <div class="container">
+        <div class="header">
+            <div class="title">
+                <h1>THE REVERSE CURRENT TEAM</h1>
+            </div>
+        </div>
+        <div class="display-container">
+            <ImageGrid images={[
+                { src: team.src, alt: "The team from our first competition"}
+            ]} height={ 500 } />
+        </div>
+        <div class="text">
+            <p>
+                Reverse Current is committed to giving students of all ages access to robotics. As a result our team is full of students from all ages, ranging from elementary school to high school.
+                Our team also hosts students from different experience levels as well, with some having done robotics for years in FLL and FRC, and some with no experience at all. <span class="highlight">We welcome all who have a passion for robotics and a willingness to work!</span>
+            </p>
+        </div>
+        <Subheading message="MEET OUR LEADS"/>
+        <div class="text">
+            <p>
+                Leading Reverse Current are experienced robotics innovators and creatives. We would like you to meet some of them.
+            </p>
+        </div>
+        <div class="bios">
+            <MentorBio
+                    name="Keagan Glover"
+                    image={keagan.src}
+                    role="Team Captain and Lead Mechanical"
+                    bio="I am all about engineering, design, and building CAD skills. As a team, we have decided to take a CAD based design approach which will help us to create the best bot we can.
+                Student based leadership is also important, as we created our team because we felt it would be best for us to teach and grow in robotics."
+                    direction="left" />
+            <MentorBio
+                    name="Gianmichael Romano"
+                    image={team.src}
+                    role="Lead Programmer"
+                    bio="Reverse Current is not entirely an original team. A lot of members carried over from a previous First Lego Team named the Aquabots.
+                When it was announced that FLL would be discontinuing after the 2026-27 season, we needed to pivot, or risk losing nearly the entirety of Dublin's pre-high school STEM programs.
+                The idea for Reverse Current was created the founding members saw the vast community of FTC at the First World Championships in Houston and knew what they had to do.
+                Within a month, Reverse Current was formed, and our journey as a First Tech Challenge team began."
+                    direction="right" />
+            <MentorBio
+                    name="Gianmichael Romano"
+                    image={gianmichael.src}
+                    role="Lead Programmer and Social Media"
+                    bio="I love computers. I love STEM. I love a lot of other things too, but all in all, Reverse Current is a culmination of my favorite things.
+                When I was asked at the Houston World Championships if I wanted to start an FTC team, I could not have responded faster than I did.
+                Being able to collaborate with my friends and inspire a new generation of students is the greatest privilege I could have been given, and I cannot wait to continue pushing this team forward."
+                    direction="left" />
+            <MentorBio
+                    name="Michael Kelbick"
+                    image={michael.src}
+                    role="Lead Programmer"
+                    bio="Reverse Current is not entirely an original team. A lot of members carried over from a previous First Lego Team named the Aquabots.
+                When it was announced that FLL would be discontinuing after the 2026-27 season, we needed to pivot, or risk losing nearly the entirety of Dublin's pre-high school STEM programs.
+                The idea for Reverse Current was created the founding members saw the vast community of FTC at the First World Championships in Houston and knew what they had to do.
+                Within a month, Reverse Current was formed, and our journey as a First Tech Challenge team began."
+                    direction="right" />
+        </div>
+    </div>
+
+    <style>
+        .header {
+            justify-content: center;
+            flex-direction: column;
+            display: flex;
+            margin-top: 60px;
+        }
+
+        .header h1{
+            color: #c83131;
+            font-size: 4vw;
+            margin: 0 auto;
+            justify-content: center;
+            display: flex;
+            font-family: var(--font-dela-gothic-one);
+            text-shadow: rgba(255,0,13,0.9) 0 0 40px;
+        }
+
+        .display-container {
+            display: flex;
+            justify-content: center;
+            margin: 50px auto;
+        }
+
+        .highlight {
+            color: #c83131;
+        }
+
+        .text {
+            color: white;
+            font-size: 36px;
+            justify-content: center;
+            display: flex;
+            margin: 0 auto;
+            max-width: 80vw;
+            text-align: center;
+            font-family: var(--font-geist-pixel);
+        }
+
+        .bios {
+            display: flex;
+            justify-content: center;
+            margin: 80px;
+            flex-direction: column;
+        }
+
+        @media screen and (max-width: 900px) {
+            .container {
+                width: fit-content;
+            }
+
+            .header h1 {
+                font-size: 3.2rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .display-container {
+                margin: 50px auto;
+            }
+
+            .text {
+                max-width: 90%
+            }
+
+            .stats {
+                max-width: 90%
+            }
+        }
+    </style>
+</Layout>

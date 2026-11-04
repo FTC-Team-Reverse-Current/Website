@@ -8,6 +8,8 @@ import ImageGrid from "../components/ImageGrid.astro";
 import { Image } from "astro:assets";
 import versionOne from '../assets/display/version-one.jpg'
 import Statistics from "../components/Statistics.astro";
+import Preview26 from '../assets/previews/26-preview.gif'
+import PortfolioPreview from "../components/PortfolioPreview.astro";
 ---
 
 <Layout>
@@ -19,16 +21,11 @@ import Statistics from "../components/Statistics.astro";
         </div>
         <div class="text">
             <p>
-                Click on a year to see our portfolio, which includes timelines, pictures, code examples, and cad models of that year
+                Click on a year to see our portfolio, which includes timelines, pictures, code examples, and cad models of that year:
             </p>
         </div>
         <div class="display-grid">
-            <div class="object">
-                <Image src={versionOne} alt="The 2026-27 Robot" class="grid-image"/>
-                <div class="grid-text">
-                    <a href="/portfolios/2026">2026-2027: BIOBUZZ</a>
-                </div>
-            </div>
+            <PortfolioPreview cover={versionOne.src} preview={Preview26.src} title='2026-27: BIOBUZZ' />
         </div>
     </div>
 
@@ -55,33 +52,6 @@ import Statistics from "../components/Statistics.astro";
             grid-template-columns: repeat(1, 1fr);
             justify-items: center;
             margin-top: 100px;
-        }
-
-        .object {
-            background-color: black;
-        }
-
-        .grid-image {
-            object-fit: cover;
-            object-position: center;
-            width: 400px;
-            height: 400px;
-        }
-
-        .grid-text {
-            margin: 20px 30px 30px;
-            text-align: center;
-        }
-
-        .grid-text a{
-            font-size: 2.7rem;
-            color: white;
-            font-family: var(--font-jersey-10);
-            text-decoration: none;
-        }
-
-        .grid-text a:hover {
-            color: #F54927;
         }
 
         .text {
