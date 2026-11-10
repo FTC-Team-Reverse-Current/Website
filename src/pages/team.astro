@@ -2,6 +2,7 @@
 
 import Layout from "../layouts/Layout.astro";
 import team from '../assets/display/team-comp-1.jpg';
+import infront from '../assets/display/infront-different.webp';
 import ImageGrid from "../components/ImageGrid.astro";
 import Subheading from "../components/Subheading.astro";
 import MentorBio from "../components/MentorBio.astro";
@@ -9,21 +10,18 @@ import MentorBio from "../components/MentorBio.astro";
 import michael from '../assets/bios/michael.jpg'
 import keagan from '../assets/bios/keagan.jpg'
 import gianmichael from '../assets/bios/gianmichael.jpg'
+import Header from "../components/Header.astro";
+import Text from "../components/Text.astro";
 
 ---
 
 <Layout>
     <div class="container">
-        <div class="header">
-            <div class="title">
-                <h1>THE TEAM</h1>
-            </div>
-        </div>
-        <div class="display-container">
-            <ImageGrid images={[
-                { src: team.src, alt: "The team from our first competition"}
-            ]} height={ 500 } />
-        </div>
+        <Header title="MEET OUR TEAM" subtitle={null}/>
+        <ImageGrid images={[
+            { src: team.src, alt: "The team from our first competition" },
+            { src: infront.src, alt: "Another cool team photo" }
+        ]} height={ 500 } />
         <div class="text">
             <p>
                 Reverse Current is committed to giving students of all ages access to robotics. As a result our team is full of students from all ages, ranging from elementary school to high school.
@@ -31,11 +29,9 @@ import gianmichael from '../assets/bios/gianmichael.jpg'
             </p>
         </div>
         <Subheading message="MEET OUR LEADS"/>
-        <div class="text">
-            <p>
-                Leading Reverse Current are experienced robotics innovators and creatives. We would like you to meet some of them.
-            </p>
-        </div>
+        <Text text="
+            Leading Reverse Current are experienced robotics innovators and creatives. We would like you to meet some of them." bottomMargin="3vh"
+        />
         <div class="bios">
             <MentorBio
                     name="Keagan Glover"
@@ -45,30 +41,12 @@ import gianmichael from '../assets/bios/gianmichael.jpg'
                 Student based leadership is also important, as we created our team because we felt it would be best for us to teach and grow in robotics."
                     direction="left" />
             <MentorBio
-                    name="Kellen Glover"
-                    image={team.src}
-                    role="Lead Mechanical"
-                    bio="Reverse Current is not entirely an original team. A lot of members carried over from a previous First Lego Team named the Aquabots.
-                When it was announced that FLL would be discontinuing after the 2026-27 season, we needed to pivot, or risk losing nearly the entirety of Dublin's pre-high school STEM programs.
-                The idea for Reverse Current was created the founding members saw the vast community of FTC at the First World Championships in Houston and knew what they had to do.
-                Within a month, Reverse Current was formed, and our journey as a First Tech Challenge team began."
-                    direction="right" />
-            <MentorBio
                     name="Gianmichael R."
                     image={gianmichael.src}
                     role="Lead Programmer and Social Media"
                     bio="I love computers. I love STEM. I love a lot of other things too, but all in all, Reverse Current is a culmination of my favorite things.
                 When I was asked at the Houston World Championships if I wanted to start an FTC team, I could not have responded faster than I did.
                 Being able to collaborate with my friends and inspire a new generation of students is the greatest privilege I could have been given, and I cannot wait to continue pushing this team forward."
-                    direction="left" />
-            <MentorBio
-                    name="Michael Kelbick"
-                    image={michael.src}
-                    role="Lead Programmer"
-                    bio="Reverse Current is not entirely an original team. A lot of members carried over from a previous First Lego Team named the Aquabots.
-                When it was announced that FLL would be discontinuing after the 2026-27 season, we needed to pivot, or risk losing nearly the entirety of Dublin's pre-high school STEM programs.
-                The idea for Reverse Current was created the founding members saw the vast community of FTC at the First World Championships in Houston and knew what they had to do.
-                Within a month, Reverse Current was formed, and our journey as a First Tech Challenge team began."
                     direction="right" />
         </div>
     </div>
@@ -77,52 +55,6 @@ import gianmichael from '../assets/bios/gianmichael.jpg'
         .container {
             perspective: 1px;
             padding: 2rem;
-        }
-
-        .title {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .header {
-            justify-content: center;
-            flex-direction: column;
-            display: flex;
-            margin-top: 0;
-        }
-
-        .header h1{
-            color: #c83131;
-            font-size: 120px;
-            margin: 2rem auto;
-            justify-content: center;
-            display: flex;
-            font-family: var(--font-dela-gothic-one);
-            text-shadow: rgba(255,0,13,0.9) 0 0 40px;
-            max-width: 90%;
-            text-align: center;
-        }
-
-        .header .header-logo {
-            width: 1rem;
-            height: 1rem;
-            justify-content: center;
-            display: flex;
-        }
-
-        .header p {
-            color: #aeaeae;
-            justify-content: center;
-            display: flex;
-            font-size: 25px;
-            font-family: var(--font-jetbrains-mono);
-        }
-
-        .display-container {
-            display: flex;
-            justify-content: center;
-            margin: 2rem auto;
         }
 
         .highlight {
@@ -134,33 +66,22 @@ import gianmichael from '../assets/bios/gianmichael.jpg'
             font-size: 36px;
             justify-content: center;
             display: flex;
-            margin: 0 auto;
-            max-width: 80vw;
+            max-width: 90%;
             text-align: center;
             font-family: var(--font-geist-pixel);
+            margin: 2rem auto 10vh;
         }
 
         .bios {
             display: flex;
             justify-content: center;
-            margin: 2rem auto;
+            margin: 1rem auto;
             flex-direction: column;
         }
 
         @media screen and (max-width: 900px) {
             .container {
                 width: 100%;
-            }
-
-            .header h1 {
-                font-size: 2rem;
-                text-align: center;
-                margin: 1rem auto;
-            }
-
-            .header p {
-                font-size: 0.8rem;
-                text-align: center;
             }
 
             .display-container {

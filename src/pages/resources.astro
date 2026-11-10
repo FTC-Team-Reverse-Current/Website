@@ -1,0 +1,64 @@
+---
+
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Text from "../components/Text.astro";
+import Subheading from "../components/Subheading.astro";
+import ImageGrid from "../components/ImageGrid.astro";
+import computer from '../assets/display/computer.jpg';
+import coding from '../assets/display/coding.jpg';
+import building from '../assets/display/building.jpg';
+import DisplayLink from "../components/DisplayLink.astro";
+
+---
+
+<Layout>
+    <div class="container">
+        <Header title="RESOURCES" subtitle={ null }/>
+        <ImageGrid images={[
+            { src: building.src, alt: "Some building crap" },
+            { src: computer.src, alt: "Computer computer" },
+            { src: coding.src, alt: "I heart coding" }
+        ]} height={ 500 }/>
+        <Text text="
+            Reverse Current is proud to share all of our code and CAD files, even from the current season.
+            We believe that FTC is less about the exact implementations of components and more of how they are designed around one another.
+            Everything we make is 100% made by humans and tested on our robots. We pride ourselves in the quality of our work, and hope you can utilize it to help your team.
+        "/>
+
+        <Subheading message="Libraries and Software" />
+        <Text text="
+            Reverse Current uses a large variety of libraries and software in order to enhance our work and make sure we are ahead of the curve. We would like to share them with you.
+        " bottomMargin = "1.5vh"/>
+        <DisplayLink items={[
+            { title: "Framework/Command Structure", href: "https://nextftc.dev/"},
+            { title: "Autonomous Routines and Pathing", href: "https://pedropathing.com/"},
+            { title: "Dashboard", href: "https://panels.bylazar.com/"},
+            { title: "Static Code Analysis", href: "https://detekt.dev/"},
+            { title: "Linter", href: "https://github.com/ktlint/ktlint"},
+            { title: "CAD Design", href: "https://www.onshape.com/en/"}
+
+        ]} />
+
+        <Subheading message="2026: Biobuzz Robot"/>
+        <Text text="
+            Features: Velocity Adjusting Auto-Aiming Turret, Size-Adjusting Shooter, Flower Extracting Flipper, Object Profiling Vertical Spindexer, Field-Centric Mecanum Drive, Full-Panels Integration, Autonomous Pathing and Shooting
+        " bottomMargin = "1.5vh"/>
+        <div class="special">
+            <DisplayLink items={[
+                { title: "Code", href: "https://github.com/FTC-Team-Reverse-Current/BIOBUZZ" },
+                { title: "CAD Files", href: "https://tinyurl.com/36393BiobuzzCad"}
+            ]}/>
+        </div>
+    </div>
+
+    <style>
+        .container {
+            padding: 2rem;
+        }
+
+        .special {
+            padding-bottom: 1.5vh;
+        }
+    </style>
+</Layout>

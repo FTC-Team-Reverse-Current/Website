@@ -1,0 +1,71 @@
+---
+
+interface Props {
+    items: {
+        title: string;
+        href: string;
+        display?: string;
+    }[]
+}
+
+const { items } = Astro.props
+
+---
+
+<div class="container">
+    {items.map(item => (
+        <div class="item"><p>{item.title}: <a href={item.href} target="_blank">{ item.display ? item.display : item.href }</a></p></div>
+    ))}
+</div>
+
+<style>
+    .container{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin: 2rem auto 10vh;
+    }
+
+    .item {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        margin: 0;
+        padding: 0;
+    }
+
+    .item p {
+        color: #c83131;
+        font-size: 3vw;
+        justify-content: center;
+        display: flex;
+        max-width: 90%;
+        text-align: center;
+        font-family: var(--font-geist-pixel);
+        text-shadow: rgba(255,0,13,0.9) 0 0 40px;
+        margin: 1vw;
+        padding: 0;
+    }
+
+    .item a {
+        color: white;
+        margin-left: 1vw;
+        text-shadow: white 0 0 40px;
+    }
+
+    @media screen and (max-width: 900px) {
+        .container {
+            margin: 2rem auto 5vh;
+        }
+
+        .item {
+            flex-direction: column;
+        }
+
+        .item p {
+            font-size: 5vw;
+            margin: 0 auto 1.5vh;
+            flex-direction: column;
+        }
+    }
+</style>

@@ -22,8 +22,10 @@ const { images, height } = Astro.props;
     .display-images {
         display: grid;
         grid-template-columns: repeat(var(--image-count), minmax(0, 1fr));
-        gap: 10px;
-        max-width: 80vw;
+        gap: 1rem;
+        max-width: 80%;
+        justify-items: center;
+        margin: 4rem auto;
     }
 
     .display-images img {
@@ -35,8 +37,9 @@ const { images, height } = Astro.props;
 
     @media screen and (max-width: 900px) {
         .display-images {
-            width: 90%;
-            max-width: 90%;
+            max-width: 95%;
+            margin: 1rem auto;
+            gap: 0.25rem;
         }
     }
 </style>

@@ -70,40 +70,28 @@ if (seasonData) {
         <Font cssVariable="--font-jersey-10" preload />
         <Font cssVariable='--font-jetbrains-mono' preload />
         <div class="object">
-            <div class="value">
                 <p>Matches</p>
                 <h1 class="animate">{eventsData.length}</h1>
-            </div>
         </div>
         <div class="object">
-            <div class="value">
                 <p>Auto</p>
                 <h1 class="animate">{statsData.auto.value.toFixed(2)}</h1>
-            </div>
         </div>
         <div class="object">
-            <div class="value">
                 <p>TeleOp</p>
                 <h1 class="animate">{statsData.dc.value.toFixed(2)}</h1>
-            </div>
         </div>
         <div class="object">
-            <div class="value">
                 <p>Endgame</p>
                 <h1 class="animate">{statsData.eg.value.toFixed(2)}</h1>
-            </div>
         </div>
         <div class="object">
-            <div class="value">
                 <p>Total</p>
                 <h1 class="animate">{statsData.tot.value.toFixed(2)}</h1>
-            </div>
         </div>
         <div class="object">
-            <div class="value">
                 <p>Wins</p>
                 <h1 class="animate">{wins}</h1>
-            </div>
         </div>
     </div>
 ): (
@@ -113,11 +101,13 @@ if (seasonData) {
     )}
 
 <style>
+
     .grid-container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(6, 1fr);
         width: 100%;
         gap: 1rem;
+        margin: 0 auto;
     }
 
     .object {
@@ -125,30 +115,22 @@ if (seasonData) {
         width: 100%;
         display: flex;
         justify-content: center;
-        backdrop-filter: blur(8px);
-    }
-
-    .value {
-        display: flex;
-        flex-direction: column;
         align-items: center;
-        justify-content: center;
-        width: 100%;
+        flex-direction: column;
     }
 
-    .value p {
-        font-size: 30px;
-        margin: 10px;
+    .object p {
+        font-size: 2rem;
         font-family: var(--font-jetbrains-mono);
     }
 
-    .value h1 {
-        font-size: 160px;
-        margin: 0 1rem 1rem;
+    .object h1 {
+        font-size: 8vw;
         font-family: var(--font-jersey-10);
         color: #c83131;
         text-shadow: rgba(255,0,13,0.6) 0 0 25px;
         opacity: 0;
+        margin-top: 0.5rem;
     }
 
     .value h1.animate__animated {
@@ -163,27 +145,22 @@ if (seasonData) {
 
     @media screen and (max-width: 900px) {
         .grid-container {
+            width: 90%;
             grid-template-columns: repeat(2, 1fr);
             grid-template-rows: repeat(3, 1fr);
             gap: 0.2rem;
         }
 
-        .value {
-            width: 100%;
-        }
-
         .object {
-            padding: 0;
             backdrop-filter: none;
         }
 
-        .value h1 {
-            font-size: 4rem;
-            margin: 0 0.5rem 0.5rem;
+        .object h1 {
+            font-size: 16vw;
         }
 
-        .value p {
-            font-size: 20px;
+        .object p {
+            font-size: 3vw;
         }
 
         .error-message {

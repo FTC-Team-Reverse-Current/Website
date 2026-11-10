@@ -1,0 +1,69 @@
+---
+
+interface Props {
+    title: string,
+    subtitle: string | null,
+}
+
+const { title, subtitle } = Astro.props
+
+---
+
+<div class="header">
+    <div class="title">
+        <h1>{ title }</h1>
+    </div>
+    {subtitle ? (
+        <div class="subtitle">
+            <p>{ subtitle }</p>
+        </div>
+    ) : null}
+</div>
+
+<style>
+    .header {
+        justify-content: center;
+        flex-direction: column;
+        display: flex;
+    }
+
+    .title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .title h1{
+        color: #c83131;
+        font-size: 120px;
+        margin: 2rem auto;
+        justify-content: center;
+        display: flex;
+        font-family: var(--font-dela-gothic-one);
+        text-shadow: rgba(255,0,13,0.9) 0 0 40px;
+        max-width: 90%;
+        text-align: center;
+    }
+
+    .subtitle p {
+        color: #aeaeae;
+        justify-content: center;
+        display: flex;
+        font-size: 25px;
+        font-family: var(--font-jetbrains-mono);
+    }
+
+    @media screen and (max-width: 900px) {
+        .title h1 {
+            font-size: 2rem;
+            text-align: center;
+            margin: 1rem auto;
+            max-width: 100%;
+        }
+
+        .subtitle p {
+            font-size: 0.8rem;
+            text-align: center;
+        }
+    }
+</style>

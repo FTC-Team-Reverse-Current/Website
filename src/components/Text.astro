@@ -1,0 +1,29 @@
+---
+const { text, bottomMargin = "10vh" } = Astro.props
+---
+
+<div class="text">
+    <p>{ text }</p>
+</div>
+
+<style define:vars={{ margin: bottomMargin }}>
+    .text {
+        color: white;
+        font-size: 36px;
+        justify-content: center;
+        display: flex;
+        max-width: 90%;
+        text-align: center;
+        font-family: var(--font-geist-pixel);
+        margin: 2rem auto;
+        margin-bottom: var(--margin);
+    }
+
+    @media screen and (max-width: 900px) {
+        .text {
+            max-width: 95%;
+            font-size: 1.25rem;
+            margin: 1rem auto;
+        }
+    }
+</style>

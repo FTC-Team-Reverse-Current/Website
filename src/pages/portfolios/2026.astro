@@ -7,6 +7,10 @@ import MentorBio from "../../components/MentorBio.astro";
 import shooterPreview from '../../assets/bios/shooter-bio.gif'
 import ImageGrid from "../../components/ImageGrid.astro";
 import odometry from '../../assets/display/odometry.gif'
+import cadChassis from '../../assets/display/chasis-cad.jpg'
+import firstRobot from '../../assets/display/first-robot.jpg';
+import testChassis from '../../assets/display/test-chassis.jpg';
+import Text from "../../components/Text.astro";
 ---
 
 <Layout>
@@ -18,41 +22,57 @@ import odometry from '../../assets/display/odometry.gif'
         </div>
         <Subheading message="THE ORIGINS OF REVERSE CURRENT" />
         <p class="subtitle">Early May, 2026</p>
-        <div class="text">
-            <p>
-                Our season started in early May. Reverse Current's founding members were at the Houston World Championships with their FRC team, the Bad Robots.
-                After touring the FTC floor of the building, we quickly came up with the idea of starting our own team due to the rocky future of FLL.
-                We knew that keeping the STEM programs in Dublin alive was critical, and we could not let such a big part of our lives simply disappear.
-            </p>
-        </div>
+        <Text text="
+            Our season started in early May. Reverse Current's founding members were at the Houston World Championships with their FRC team, the Bad Robots.
+            After touring the FTC floor of the building, we quickly came up with the idea of starting our own team due to the rocky future of FLL.
+            We knew that keeping the STEM programs in Dublin alive was critical, and we could not let such a big part of our lives simply disappear.
+        "/>
+
         <Subheading message="OUR HUBLE BEGINNINGS" />
         <p class="subtitle">May, 2026</p>
-        <div class="text">
-            <p>
-                We did not know where to begin. We had no parts, no sponsors, no structure. We had an idea and had not fully fleshed out where to go from there.
-                In late May, we were cleaning out the shed behind our local high school which was run by Bad Robots, and there we would get our first push.
-                Within the shed, we found FTC parts from the now disbanded 8 to Automate team from 2022. We saw this as a sign that Reverse Current was meant to be, so we got to work.
-            </p>
-        </div>
-        <Subheading message="OUR FIRST CHASSIS" />
+        <ImageGrid height={ 500 } images={[
+            { src: testChassis.src, alt: "Our very first functional robot" }
+
+        ]} />
+        <Text text="
+            We did not know where to begin. We had no parts, no sponsors, no structure. We had an idea and had not fully fleshed out where to go from there.
+            In late May, we were cleaning out the shed behind our local high school which was run by Bad Robots, and there we would get our first push.
+            Within the shed, we found FTC parts from the now disbanded 8 to Automate team from 2022. We saw this as a sign that Reverse Current was meant to be, so we got to work.
+        "/>
+
+        <Subheading message="OUR FIRST ROBOT" />
         <p class="subtitle">June - Mid July, 2026</p>
-        <div class="text">
-            <p>
-                Using the parts we thrifted, we began working on a test chassis to learn the basics of the driver hub, programming, and electrical work.
-                For a week or so, we struggled connecting the robot to the driver hub, then pushing the code to the robot, then connecting controllers.
-                During this stage, our greatest problems were figuring out what parts and materials we were missing, as well as how we needed to set up our team structure and pipeline.
-                For around a week, we could not connect our controllers because we did not have the required OTG adapter for the controllers.
-            </p>
-        </div>
+        <ImageGrid height={ 500 } images={[
+            { src: firstRobot.src, alt: "Our very first functional robot" }
+
+        ]} />
+        <Text text="
+            Using the parts we thrifted, we began working on a test chassis to learn the basics of the driver hub, programming, and electrical work.
+            For a week or so, we struggled connecting the robot to the driver hub, then pushing the code to the robot, then connecting controllers.
+            During this stage, our greatest problems were figuring out what parts and materials we were missing, as well as how we needed to set up our team structure and pipeline.
+            For around a week, we could not connect our controllers because we did not have the required OTG adapter for the controllers.
+        "/>
+
+        <Subheading message="DESIGNING OUR CHASSIS" />
+        <p class="subtitle">August, 2026</p>
+        <ImageGrid height={ 500 } images={[
+            { src: cadChassis.src, alt: "designing our first chassis" }
+            
+        ]} />
+        <Text text="
+            Fortunately for us, we knew that this year's game would involve picking up balls from the ground which would be called 'pollen.'
+          We did not want to waste any time and immediately got to work designing our first metal chassis with an intake section. Some CAD work and metal cutting later, we had the first part of our robot done.
+          We immediately began testing it. Observing how it worked while driving. Seeing how easy it was to mount parts on to it. Seeing how easily we could asses the Control and Expansion Hubs.
+          This was the era of trial and error, fabbing and testing, and we are very happy with our final result. It is sleek, robust, and does the job well.
+        "/>
+
         <Subheading message="THE GAME ANNOUNCEMENT" />
         <p class="subtitle">September, 2026</p>
-        <div class="text">
-            <p>
-                This was the part we had been waiting for. After months of preparation, we were ready to begin. When the announcement for the game came out, we studied the video vigerously.
-                We spent several meetings discussing how we wanted to design our robot. We were overwhelmed with ideas, and learning to prioritize certain parts of a game was a lesson we had to learn.
-                Ideas like a spindexer, mechanical sorting, and elevators had to be scrapped in order to make a clean, robust design for our robot. We could not spread ourselves thin and expect good results.
-            </p>
-        </div>
+        <Text text="
+            This was the part we had been waiting for. After months of preparation, we were ready to begin. When the announcement for the game came out, we studied the video vigerously.
+            We spent several meetings discussing how we wanted to design our robot. We were overwhelmed with ideas, and learning to prioritize certain parts of a game was a lesson we had to learn.
+            Ideas like a spindexer, mechanical sorting, and elevators had to be scrapped in order to make a clean, robust design for our robot. We could not spread ourselves thin and expect good results.
+        "/>
         <div class="bio">
             <MentorBio
                     name="Nectar, Pollen, and Flowers"
@@ -66,15 +86,23 @@ import odometry from '../../assets/display/odometry.gif'
             />
         </div>
         <Subheading message="ODOMETRY TUNING" />
-        <p class="subtitle">Late September, 2026</p>
-        <div class="text">
-            <p>
-                One of our greatest struggles in the early season was the Odometry. Very early on in the season we purchased a GoBuilda Pinpoint, but we underestimated the challenges that would come from
-                trying to ensure our Odometry and subsequent autonomous was properly tuned. When we ran our "Go Straight" test, the robot would completely swerve to the right. It took us several meetings to properly
-                figure out the issue. We disassembled our drive train, re-oriented the pinpoint, and even tried refactoring our code. We only learned after our first competition that the issue was a faulty motor on
-                the top left of the chassis. Without a doubt this was a reality check not to assume that something works because it should just work. When you are engineering, everything deserves scrutiny.
-            </p>
-        </div>
+        <p class="subtitle">October, 2026</p>
+        <Text text="
+            One of our greatest struggles in the early season was the Odometry. Very early on in the season we purchased a GoBuilda Pinpoint, but we underestimated the challenges that would come from
+            trying to ensure our Odometry and subsequent autonomous was properly tuned. When we ran our 'Go Straight' test, the robot would completely swerve to the right. It took us several meetings to properly
+            figure out the issue. We disassembled our drive train, re-oriented the pinpoint, and even tried refactoring our code. We only learned after our first competition that the issue was a faulty motor on
+            the top left of the chassis. Without a doubt this was a reality check not to assume that something works because it should just work. When you are engineering, everything deserves scrutiny.
+        "/>
+
+        <Subheading message="MEETING NUMBER ONE" />
+        <p class="subtitle">Late October, 2026</p>
+        <Text text="
+            The time had come for our very first competition... Months of work, struggle, and innovating had led up to this, and we came back with... 2 wins. We were not as successful as we had hoped.
+            We left the competition though with something way more meaningful than winning. We discovered major flaws in our robot, and now we were finally ready to solve them.
+            Mainly, our wooden chassis was too weak. During a match it exploded and causes a wheel to come loose. Along with this we identified several other issues with our robot which needed to be fixed.
+            We came in fully confident we would dominate, but now we understand that even if you believe something will work, it can still fail.
+        "/>
+
 
     </div>
 

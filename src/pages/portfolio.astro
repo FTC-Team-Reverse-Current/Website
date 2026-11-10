@@ -10,20 +10,14 @@ import versionOne from '../assets/display/version-one.jpg'
 import Statistics from "../components/Statistics.astro";
 import Preview26 from '../assets/previews/26-preview.gif'
 import PortfolioPreview from "../components/PortfolioPreview.astro";
+import Header from "../components/Header.astro";
+import Text from "../components/Text.astro";
 ---
 
 <Layout>
     <div class="container">
-        <div class="header">
-            <div class="title">
-                <h1>PORTFOLIO</h1>
-            </div>
-        </div>
-        <div class="text">
-            <p>
-                Click on a year to see our portfolio, which includes timelines, pictures, code examples, and cad models of that year:
-            </p>
-        </div>
+        <Header title="PORTFOLIOS" subtitle={null}/>
+        <Text text="Click on a year to see our portfolio, which includes timelines, pictures, code examples, and cad models of that year:"/>
         <div class="display-grid">
             <PortfolioPreview cover={versionOne.src} preview={Preview26.src} title='2026-27: BIOBUZZ' />
         </div>
@@ -35,46 +29,6 @@ import PortfolioPreview from "../components/PortfolioPreview.astro";
             padding: 2rem;
         }
 
-        .title {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .header {
-            justify-content: center;
-            flex-direction: column;
-            display: flex;
-            margin-top: 0;
-        }
-
-        .header h1{
-            color: #c83131;
-            font-size: 120px;
-            margin: 2rem auto;
-            justify-content: center;
-            display: flex;
-            font-family: var(--font-dela-gothic-one);
-            text-shadow: rgba(255,0,13,0.9) 0 0 40px;
-            max-width: 90%;
-            text-align: center;
-        }
-
-        .header .header-logo {
-            width: 1rem;
-            height: 1rem;
-            justify-content: center;
-            display: flex;
-        }
-
-        .header p {
-            color: #aeaeae;
-            justify-content: center;
-            display: flex;
-            font-size: 25px;
-            font-family: var(--font-jetbrains-mono);
-        }
-
         .display-grid {
             display: grid;
             grid-template-columns: minmax(0, 1fr);
@@ -82,43 +36,14 @@ import PortfolioPreview from "../components/PortfolioPreview.astro";
             margin: 2rem auto;
         }
 
-        .text {
-            color: white;
-            font-size: 36px;
-            justify-content: center;
-            display: flex;
-            margin: 60px auto 0;
-            max-width: 80vw;
-            text-align: center;
-            font-family: var(--font-geist-pixel);
-        }
-
         @media screen and (max-width: 900px) {
             .container {
                 width: 100%;
             }
 
-            .header h1 {
-                font-size: 2rem;
-                text-align: center;
-                margin: 1rem auto;
-            }
-
-            .header p {
-                font-size: 0.8rem;
-                text-align: center;
-            }
-
             .display-grid {
                 margin: 1rem auto;
             }
-
-            .text {
-                max-width: 90%;
-                font-size: 1.25rem;
-                margin: 1rem auto;
-            }
         }
-
     </style>
 </Layout>

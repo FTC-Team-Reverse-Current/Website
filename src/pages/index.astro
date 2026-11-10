@@ -15,6 +15,8 @@ import Square from '../assets/square.svg'
 import Statistics from '../components/Statistics.astro';
 import Subheading from "../components/Subheading.astro";
 import turret from '../assets/display/turret.gif'
+import Header from "../components/Header.astro";
+import Text from "../components/Text.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -22,53 +24,35 @@ import turret from '../assets/display/turret.gif'
 <Layout>
   <div class="container">
     <Marquee message="WELCOME TO REVERSE CURRENT"/>
-    <div class="header">
-      <div class="title">
-        <h1>WE ARE REVERSE CURRENT</h1>
-      </div>
-      <div class="subtitle">
-        <p>Creating opportunities in STEM for all ages and redefining what is possible in FTC</p>
-      </div>
-    </div>
-    <div class="display-container">
-      <ImageGrid images={[
-        { src: turret.src, alt: "Version one of our 2026 robot" },
-        { src: watching.src, alt: "A competition photo" },
-      ]} height={ 500 } />
-    </div>
-    <div class="text">
-      <p>
-        We are Reverse Current, a First Tech Challenge team from Dublin, Ohio.
-        Reverse Current is commited to giving young students access to STEM and developing real skills in our members.
-        Our team is pushing the boundaries of what a small, self-started team can do in First competitions.
-      </p>
-    </div>
+    <Header title="WE ARE REVERSE CURRENT" subtitle="Creating opportunities in STEM for all ages and redefining what is possible in FTC"/>
+    <ImageGrid images={[
+      { src: turret.src, alt: "Version one of our 2026 robot" },
+      { src: watching.src, alt: "A competition photo" },
+    ]} height={ 500 } />
+    <Text text="
+      We are Reverse Current, a First Tech Challenge team from Dublin, Ohio.
+      Reverse Current is commited to giving young students access to STEM and developing real skills in our members.
+      Our team is pushing the boundaries of what a small, self-started team can do in First competitions."
+    />
+    <div class="spacer"></div>
     <Subheading message="THE STORY OF OUR TEAM"/>
-    <div class="display-container">
-      <ImageGrid images={[
-        { src: firstRobot.src, alt: "Our first robot" },
-        { src: oldSetup.src, alt: "Our original setup" },
-        { src: chasisCad.src, alt: "Original chassis CAD" },
-        { src: fabricating.src, alt: "Fabricating the wooden chassis" }
-      ]} height={ 500 }/>
-    </div>
-    <div class="text">
-      <p>
-        Reverse Current is not entirely an original team. A lot of members carried over from a previous First Lego Team named the Aquabots.
-        When it was announced that FLL would be discontinuing after the 2026-27 season, we needed to pivot, or risk losing nearly the entirety of Dublin's pre-high school STEM programs.
-        The idea for Reverse Current was created the founding members saw the vast community of FTC at the First World Championships in Houston and knew what they had to do.
-        Within a month, Reverse Current was formed, and our journey as a First Tech Challenge team began.
-      </p>
-    </div>
+    <ImageGrid images={[
+      { src: firstRobot.src, alt: "Our first robot" },
+      { src: oldSetup.src, alt: "Our original setup" },
+      { src: chasisCad.src, alt: "Original chassis CAD" },
+      { src: fabricating.src, alt: "Fabricating the wooden chassis" }
+    ]} height={ 500 }/>
+    <Text text="
+      Reverse Current is not entirely an original team. A lot of members carried over from a previous First Lego Team named the Aquabots.
+      When it was announced that FLL would be discontinuing after the 2026-27 season, we needed to pivot, or risk losing nearly the entirety of Dublin's pre-high school STEM programs.
+      The idea for Reverse Current was created the founding members saw the vast community of FTC at the First World Championships in Houston and knew what they had to do.
+      Within a month, Reverse Current was formed, and our journey as a First Tech Challenge team began."
+    />
     <Subheading message="SEASON STATISTICS"/>
-    <div class="text">
-      <p>
-        Here are our current team statistics pulled from the FTC Scout API. These are not completely accurate since they split the match scores between both team members.
-      </p>
-    </div>
-    <div class="stats">
-      <Statistics season="2026"/>
-    </div>
+    <Text text="
+      Here are our current team statistics pulled from the FTC Scout API. These are not completely accurate since they split the match scores between both team members." bottomMargin="3vh"
+    />
+    <Statistics season="2026"/>
   </div>
 
   <style>
@@ -76,76 +60,6 @@ import turret from '../assets/display/turret.gif'
     .container {
       perspective: 1px;
       padding: 2rem;
-    }
-
-    .title {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .header {
-      justify-content: center;
-      flex-direction: column;
-      display: flex;
-      margin-top: 0;
-    }
-
-    .header h1{
-      color: #c83131;
-      font-size: 120px;
-      margin: 2rem auto;
-      justify-content: center;
-      display: flex;
-      font-family: var(--font-dela-gothic-one);
-      text-shadow: rgba(255,0,13,0.9) 0 0 40px;
-      max-width: 90%;
-      text-align: center;
-    }
-
-    .header .header-logo {
-      width: 1rem;
-      height: 1rem;
-      justify-content: center;
-      display: flex;
-    }
-
-    .header p {
-      color: #aeaeae;
-      justify-content: center;
-      display: flex;
-      font-size: 25px;
-      font-family: var(--font-jetbrains-mono);
-    }
-
-    .text {
-      color: white;
-      font-size: 36px;
-      justify-content: center;
-      display: flex;
-      margin: 2rem auto;
-      max-width: 80%;
-      text-align: center;
-      font-family: var(--font-geist-pixel);
-    }
-
-    .subheader {
-      color: #c83131;
-      font-size: 43px;
-      justify-content: center;
-      display: flex;
-      text-align: center;
-      font-family: var(--font-dela-gothic-one);
-    }
-
-    .subheader h2 {
-      text-shadow: rgba(255,0,13,0.9) 0 0 57px;
-    }
-
-    .display-container {
-      display: flex;
-      justify-content: center;
-      margin: 2rem auto;
     }
 
     .stats {
@@ -158,27 +72,6 @@ import turret from '../assets/display/turret.gif'
     @media screen and (max-width: 900px) {
       .container {
         width: 100%;
-      }
-
-      .header h1 {
-        font-size: 2rem;
-        text-align: center;
-        margin: 1rem auto;
-      }
-
-      .header p {
-        font-size: 0.8rem;
-        text-align: center;
-      }
-
-      .display-container {
-        margin: 1rem auto;
-      }
-
-      .text {
-        max-width: 90%;
-        font-size: 1.25rem;
-        margin: 1rem auto;
       }
 
       .stats {
